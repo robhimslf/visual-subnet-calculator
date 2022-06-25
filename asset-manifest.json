@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/visual-subnet-calculator/static/css/main.3950d7ff.css",
-    "main.js": "/visual-subnet-calculator/static/js/main.da433588.js",
+    "main.js": "/visual-subnet-calculator/static/js/main.218acf50.js",
     "index.html": "/visual-subnet-calculator/index.html",
     "main.3950d7ff.css.map": "/visual-subnet-calculator/static/css/main.3950d7ff.css.map",
-    "main.da433588.js.map": "/visual-subnet-calculator/static/js/main.da433588.js.map"
+    "main.218acf50.js.map": "/visual-subnet-calculator/static/js/main.218acf50.js.map"
   },
   "entrypoints": [
     "static/css/main.3950d7ff.css",
-    "static/js/main.da433588.js"
+    "static/js/main.218acf50.js"
   ]
 }
