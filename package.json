@@ -2,6 +2,7 @@
   "name": "visual-subnet-calculator",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://robhimself.com/visual-subnet-calculator/",
   "dependencies": {
     "bootstrap": "^5.1.3",
     "formik": "^2.2.9",
