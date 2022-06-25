@@ -8,6 +8,7 @@ env:
 
 jobs:
   build-deploy:
+    name: "Build & Deploy"
     runs-on: ubuntu-latest
 
     steps:
