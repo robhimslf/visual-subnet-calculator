@@ -451,6 +451,7 @@ const App: FC = () => {
      * @param {number} rowIndex 
      */
     const handleSplit = ( rowIndex: number ) => {
+
         setResult( prev => {
             const subnet = prev.subnets[ rowIndex ];
             const next = utils.split(
@@ -513,18 +514,7 @@ const App: FC = () => {
         },
         {
             Header: 'Split',
-            id: 'split',
-            Cell: ({ row }: CellProps<ISubnet> ) => (
-                <TableCell>
-                    <button
-                        type="button"
-                        className="btn btn-link btn-sm p-0 border-0"
-                        disabled={ !row.original.actions.split }
-                        onClick={ () => handleSplit( row.index )}>
-                        Split
-                    </button>
-                </TableCell>
-            )
+            id: 'split'
         },
         {
             Header: 'Join',
@@ -569,7 +559,7 @@ const App: FC = () => {
                                 .required( 'Required.' )
                                 .matches( /^[0-9]{2}$/, 'Must be a 2-digit numeric value.' )
                         })}
-                        validateOnBlur
+                        validateOnChange
                         onSubmit={( values ) => {
                             setFormParams( values );
                             calculate( values.network, values.netbits, defaultRootSubnet );
@@ -695,6 +685,22 @@ const App: FC = () => {
                                                         </div>
                                                     </td>
                                                 ))
+                                            }
+
+                                            if ( cell.column.id === 'split' ) {
+                                                return (
+                                                    <td { ...cell.getCellProps() }>
+                                                        <TableCell>
+                                                            <button
+                                                                type="button"
+                                                                className="btn btn-link btn-sm p-0 border-0"
+                                                                disabled={ !row.original.actions.split }
+                                                                onClick={ () => handleSplit( row.index )}>
+                                                                Split
+                                                            </button>
+                                                        </TableCell>
+                                                    </td>
+                                                )
                                             }
 
                                             return (
