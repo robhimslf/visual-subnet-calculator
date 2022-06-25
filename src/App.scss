@@ -1,0 +1,24 @@
+.form-label-sm {
+    font-size: 0.875rem;
+}
+
+.subnet-join {
+    text-align: center;
+    vertical-align: middle;
+    width: 20px;
+    padding: 0.10rem !important;
+    background-color: #cccccc !important;
+
+    span {
+        writing-mode: vertical-rl;
+        font-size: 0.75rem;
+    }
+}
+
+.table {
+    font-size: 0.875rem;
+
+    > :not(:first-child) {
+        border-top: none;
+    }
+}
