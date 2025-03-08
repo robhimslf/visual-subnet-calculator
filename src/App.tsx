@@ -90,6 +90,56 @@ const utils = {
             parseInt( result[ 4 ]);
     },
 
+
+    _asciiToBin: function( value: string ): string | null {
+        let out: string | null = null;
+
+        const regex = /([0-9]+)\.([0-9a-f]+)/;
+        const result = regex.exec( value );
+
+        if ( result ) {
+            out = '';
+            const length = result[ 1 ];
+            const encoded = result[ 2 ];
+
+            for ( let i = 0; i < parseInt( result[ 1 ]); i++ ) {
+                const ch = parseInt( result[ 2 ].charAt( Math.floor( i / 4 )), 16 );
+                const pos = i % 4;
+                out += ( ch & ( 1 << pos ) ? '1' : '0' );
+            }
+        }
+
+        return out;
+    },
+
+    /**
+     * 
+     * @param {string} value 
+     * @returns {string}
+     */
+    _binToAscii: function( value: string ): string {
+        let out = '',
+            bit = 0,
+            char = 0;
+
+        for ( let i = 0; i < value.length; i++ ) {
+            if ( value.charAt( i ) == '1' )
+                char |= 1 << bit;
+
+            bit++;
+            if ( bit > 3 ) {
+                out += char.toString( 16 );
+                char = 0;
+                bit = 0;
+            }
+        }
+
+        if ( bit > 0 )
+            out += char.toString( 16 );
+
+        return value.length + '.' + out;
+    },
+
     _createSubnet: function( node: any, address: number, mask: number, labels: any, depth: number ): ISubnet[] {
         if ( node[ 2 ]) {
             let subnets: ISubnet[] = [];
@@ -196,6 +246,16 @@ const utils = {
             ipNot &= ~ 1 << i;
 
         return ipNot;
+    },
+
+    _nodeToString: function( node: any ): string {
+        if ( node[ 2 ]) {
+            return '1' +
+                utils._nodeToString( node[ 2 ][ 0 ]) +
+                utils._nodeToString( node[ 2 ][ 1 ]);
+        }
+
+        return '0';
     },
 
     /**
